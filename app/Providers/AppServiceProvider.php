@@ -25,5 +25,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        
+        view()->composer('layouts.template', function($view){
+            
+            $empresa = 'Estacionamento';
+
+            $view->with(['empresa' => $empresa]);
+
+        });
     }
 }

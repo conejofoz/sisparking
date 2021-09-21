@@ -7,9 +7,10 @@ use Livewire\Component;
 class Caixas extends Component
 {
     public $name = 'Silvio';
+
     
     public function mount(){
-
+        $this->name = 'Silvio Conejo';
     }
 
 

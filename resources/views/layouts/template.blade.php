@@ -31,7 +31,7 @@
         <link href="{{ asset('assets/css/elements/color_library.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- SECCIÓN PARA INCLUÍR ESTILOS PERSONALIZADOS EN LOS MÓDULOS DEL SISTEMA -->
-        @YIELD('STYLES')
+        @yield('styles')
 
         <!-- NECESARIO PARA EL FUNCIONAMIENTO DE LIVEWIRE -->
         @livewireStyles
@@ -541,6 +541,9 @@
         <script src="{{ asset('plugins/notification/snackbar/snackbar.min.js') }}"></script>
         <script src="{{ asset('plugins/flatpickr/flatpickr.js') }}"></script>
         <script src="{{ asset('plugins/flatpickr/flatpickr_es.js') }}"></script>
+
+
+        
 
         <!-- SECCIÓN PARA INCLUÍR SCRIPTS PERSONALIZADOS EN LOS MÓDULOS DEL SISTEMA -->
         @yield('scripts')

@@ -21,10 +21,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/caixas', function(){
+/* Route::get('/caixas', function(){
     return view('caixas');
-});
+}); */
+
+
+Route::view('caixas', 'caixas');
 
 Route::get('/empresa', function(){
-    return 'emrpesa';
+    return 'empresa';
 });
