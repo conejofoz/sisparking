@@ -26,8 +26,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 }); */
 
 
-Route::view('caixas', 'caixas');
+
 
 Route::get('/empresa', function(){
     return 'empresa';
 });
+
+
+Route::view('caixas', 'caixas');
+Route::view('tipos', 'tipos');
