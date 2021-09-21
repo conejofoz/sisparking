@@ -29,9 +29,9 @@ class AppServiceProvider extends ServiceProvider
         
         view()->composer('layouts.template', function($view){
             
-            $empresa = 'Estacionamento';
+            $tipos = \App\Tipo::count();
 
-            $view->with(['empresa' => $empresa]);
+            $view->with(['tipos' => $tipos]);
 
         });
     }

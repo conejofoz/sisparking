@@ -32,13 +32,13 @@ class Tipos extends Component
         if(strlen($this->search) > 0)
         {
 
-            $info = Tipo::where('descricao', 'like' . '%' $this->search . '%')->pagination($this->pagination);
+            $info = Tipo::where('descricao', 'like' . '%' . $this->search . '%')->paginate($this->pagination);
 
             return view('livewire.tipos.component', ['info' => $info]);
 
         } else {
 
-            $info = Tipo::pagination($this->pagination);
+            $info = Tipo::paginate($this->pagination);
 
             return view('livewire.tipos.component', compact('info'));
 

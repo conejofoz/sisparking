@@ -19,7 +19,7 @@
                         <tr>                                                   
                             <th class="text-center">ID</th>
                             <th class="text-center">DESCRIPCIÓN</th>
-                            <th class="text-center">IMÁGEN</th>
+                            {{-- <th class="text-center">IMÁGEN</th> --}}
                             <th class="text-center">ACCIONES</th>
                         </tr>
                     </thead>
@@ -28,8 +28,8 @@
                        <tr>
 
                         <td class="text-center"><p class="mb-0">{{$r->id}}</p></td>
-                        <td class="text-center">{{$r->descripcion}}</td>
-                        <td class="text-center"><img class="avatar avatar-lg" src="images/{{$r->imagen}}" alt="" height="40"></td>
+                        <td class="text-center">{{$r->descricao}}</td>
+                       {{--  <td class="text-center"><img class="avatar avatar-lg" src="images/{{$r->imagen}}" alt="" height="40"></td> --}}
                         <td class="text-center">
                             @include('common.actions', ['edit' => 'tipos_edit', 'destroy'=> 'tipos_destroy'])
                         </td>
