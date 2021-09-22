@@ -12,5 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
+        //\App\Tipo::factory(100)->create();
+        factory(App\Tipo::class, 50)->create();
     }
 }

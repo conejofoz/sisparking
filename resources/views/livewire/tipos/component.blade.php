@@ -18,9 +18,9 @@
                     <thead>
                         <tr>                                                   
                             <th class="text-center">ID</th>
-                            <th class="text-center">DESCRIPCIÓN</th>
+                            <th class="text-center">DESCRIÇÃO</th>
                             {{-- <th class="text-center">IMÁGEN</th> --}}
-                            <th class="text-center">ACCIONES</th>
+                            <th class="text-center">AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +31,8 @@
                         <td class="text-center">{{$r->descricao}}</td>
                        {{--  <td class="text-center"><img class="avatar avatar-lg" src="images/{{$r->imagen}}" alt="" height="40"></td> --}}
                         <td class="text-center">
-                            @include('common.actions', ['edit' => 'tipos_edit', 'destroy'=> 'tipos_destroy'])
+                            {{-- @include('common.actions', ['edit' => 'tipos_edit', 'destroy'=> 'tipos_destroy']) --}}
+                            @include('common.actions')
                         </td>
                     </tr>
                     @endforeach

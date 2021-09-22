@@ -18,7 +18,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 col-lg-8 col-md-8 ">
-                        <label>Descripción</label>
+                        <label>Descrição</label>
                         <div class="input-group ">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg"
@@ -29,9 +29,9 @@
                                     </svg></span>
                             </div>
                             <input type="text" class="form-control" placeholder="Nombre del tipo"
-                                wire:model.lazy="descripcion">
+                                wire:model.lazy="descricao">
                         </div>
-                        @error('descripcion') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('descricao') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-sm-12">
                         <label>Imágen</label>
@@ -43,7 +43,7 @@
                 <button type="button" wire:click="doAction(1)" class="btn btn-dark mr-1">
                     <i class="mbri-left"></i> Regresar
                 </button>
-                <button type="button" wire:click="StoreOrUpdate() " class="btn btn-primary">
+                <button type="button" wire:click="storeOrUpdate() " class="btn btn-primary">
                     <i class="mbri-success"></i> Guardar
                 </button>
 

@@ -32,14 +32,17 @@ class Tipos extends Component
         if(strlen($this->search) > 0)
         {
 
-            $info = Tipo::where('descricao', 'like' . '%' . $this->search . '%')->paginate($this->pagination);
+            $info = Tipo::where('descricao', 'like', '%' . $this->search .'%')->paginate($this->pagination);
 
+            //return view('livewire.tipos.component', ['info' => $info]);
+            //dd($info);
             return view('livewire.tipos.component', ['info' => $info]);
 
         } else {
 
             $info = Tipo::paginate($this->pagination);
 
+            
             return view('livewire.tipos.component', compact('info'));
 
         }
@@ -53,7 +56,7 @@ class Tipos extends Component
     }
 
 
-
+    //Alternar entre telas de listagem ou edição dependendo do valor de $action
     public function doAction($action)
     {
         $this->action = $action;
@@ -92,7 +95,7 @@ class Tipos extends Component
         );
 
         //Validar se existe outro registro com a mesma descricao
-        if( $selected_id > 0)
+        if( $this->selected_id > 0)
         {
             $existe = Tipo::where('descricao', $this->descricao)
             ->where('id', '<>', $this->selected_id)
@@ -155,6 +158,17 @@ class Tipos extends Component
 
 
 
+    /**
+     * Listeners
+     * Escutar eventos e executar ações
+     * No front através de javascript emitimos um evento
+     * que é recuperado aqui no controlador. E quando chega aqui dispara o método destroy.
+     * Nesse exemplo foi emitido um evento chamado deleteRow juntamente com o id
+     * que não aparece aqui mais é manipulado internamente por livewire
+     * window.livewire.emit('deleteRow', id)
+     * Esse id é capturado quando clica-se no botão delete e enviado para uma função javascript
+     * <a href="javascript:void(0);" onclick="Confirm('{{$r->id}}')"
+     */
     protected $listeners = [
         'deleteRow' => 'destroy'
     ];
