@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCaixasTable extends Migration
+class CreateGavetasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCaixasTable extends Migration
      */
     public function up()
     {
-        Schema::create('caixas', function (Blueprint $table) {
+        Schema::create('gavetas', function (Blueprint $table) {
             $table->id();
             $table->string('descricao');
             $table->enum('status', ['DISPONÍVEL', 'OCUPADO'])->default('DISPONÍVEL');
@@ -30,6 +30,6 @@ class CreateCaixasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('caixas');
+        Schema::dropIfExists('gavetas');
     }
 }

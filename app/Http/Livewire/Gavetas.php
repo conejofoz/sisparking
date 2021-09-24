@@ -4,10 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Caixa;
+use App\Gaveta;
 use App\Tipo;
 
-class Caixas extends Component
+class Gavetas extends Component
 {
 
     use WithPagination;
@@ -31,22 +31,22 @@ class Caixas extends Component
 
         if(strlen($this->search) > 0)
         {
-            $info = Caixa::leftjoin('tipos as t', 't.id', 'caixas.tipo_id')
-            ->select('caixas.*', 't.descricao as tipo')
-            ->where('caixas.descricao', 'like', '%' . $this->search .'%')
-            ->orWhere('caixas.status', 'like', '%' . $this->search .'%')
+            $info = Gaveta::leftjoin('tipos as t', 't.id', 'gavetas.tipo_id')
+            ->select('gavetas.*', 't.descricao as tipo')
+            ->where('gavetas.descricao', 'like', '%' . $this->search .'%')
+            ->orWhere('gavetas.status', 'like', '%' . $this->search .'%')
             ->paginate($this->pagination);
 
-            return view('livewire.caixas.caixas', ['info' => $info]);
+            return view('livewire.gavetas.gavetas', ['info' => $info]);
 
         } else {
 
-            $info = Caixa::leftjoin('tipos as t', 't.id', 'caixas.tipo_id')
-            ->select('caixas.*', 't.descricao as tipo')
-            ->orderBy('caixas.id', 'desc')
+            $info = Gaveta::leftjoin('tipos as t', 't.id', 'gavetas.tipo_id')
+            ->select('gavetas.*', 't.descricao as tipo')
+            ->orderBy('gavetas.id', 'desc')
             ->paginate($this->pagination);
 
-            return view('livewire.caixas.caixas', ['info' => $info]);
+            return view('livewire.gavetas.gavetas', ['info' => $info]);
 
         }
     }
@@ -80,7 +80,7 @@ class Caixas extends Component
 
     public function edit($id)
     {
-        $record = Caixa::find($id);
+        $record = Gaveta::find($id);
         $this->descricao = $record->descricao;
         $this->tipo = $record->tipo_id;
         $this->status= $record->status;
@@ -108,13 +108,13 @@ class Caixas extends Component
 
         if($this->selected_id <=0)
         {
-            $caixa = Caixa::create([
+            $gaveta = Gaveta::create([
                 'descricao' => $this->descricao,
                 'tipo_id' => $this->tipo,
                 'status' => $this->status
             ]);
         } else {
-            $record = Caixa::find($this->selected_id);
+            $record = Gaveta::find($this->selected_id);
             $record->create([
                 'descricao' => $this->descricao,
                 'tipo_id' => $this->tipo,
@@ -124,9 +124,9 @@ class Caixas extends Component
 
         if($this->selected_id)
         {
-            $this->emit('msgok', 'Caixa atualizado com sucesso!');
+            $this->emit('msgok', 'Gaveta atualizado com sucesso!');
         } else {
-            $this->emit('msgok', 'Caixa criado com sucesso!');
+            $this->emit('msgok', 'Gaveta criado com sucesso!');
         }
 
         $this->resetInput();
@@ -138,7 +138,7 @@ class Caixas extends Component
     {
         if($id)
         {
-            $record = Caixa::find($id);
+            $record = Gaveta::find($id);
             $record->delete();
             $this->resetInput();
             $this->emit('msgok', 'Registro eliminado com sucesso!');

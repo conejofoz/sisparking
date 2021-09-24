@@ -563,6 +563,9 @@
         <!-- NECESARIO PARA EL FUNCIONAMIENTO DE LIVEWIRE -->
         @livewireScripts
 
+        {{-- Escutar os eventos do livewire que emite as mensagens de todas as páginas
+            ou seja quando alguem gravar alguma coisa será mostrado a mensagem globalmente aqui
+         --}}
         <script>
             window.livewire.on('msgok', msgOK => {
                 toastr.success(msgOK, "info");

@@ -3,8 +3,8 @@
 @section('content')
 <div>
 
-    {{-- @livewire('caixas', 'caixas') --}}
+    {{-- @livewire('gavetas', 'gavetas') --}}
     {{-- Versão 7+ do laravel fazer dessa forma: --}}
-    <livewire:caixas />
+    <livewire:gavetas />
 </div>
 @endsection
