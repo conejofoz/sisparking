@@ -52,6 +52,9 @@ class Gavetas extends Component
     }
 
 
+    /* Esse método o livewire tras por padrão
+    ele atualiza a página quando fazemos uma busca e vai para
+    a página selecionada em gotoPage */
     public function updatingSearch()
     {
         $this->gotoPage(1);

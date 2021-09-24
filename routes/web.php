@@ -35,3 +35,4 @@ Route::get('/empresa', function(){
 
 Route::view('caixas', 'caixas');
 Route::view('tipos', 'tipos');
+Route::view('caixas', 'caixas');
