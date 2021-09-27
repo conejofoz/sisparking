@@ -87,7 +87,7 @@ class CaixaController extends Component
     public function storeOrUpdate()
     {
         $this->validate([
-            'tipo' = > 'not_in:Escolher'
+            'tipo' => 'not_in:Escolher'
         ]);
 
         $this->validate([
@@ -110,7 +110,7 @@ class CaixaController extends Component
             {
                 $image = $this->comprovante;
                 $fileName = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';'))))[1][1];
-                $moved = \Image::make($image)->save('images/'.$fileName);
+                $moved = \Image::make($image)->save('images/movs/'.$fileName);
 
                 if($moved)
                 {
