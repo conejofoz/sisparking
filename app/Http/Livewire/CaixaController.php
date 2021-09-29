@@ -4,10 +4,14 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Artisan;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Caixa;
-use Illuminate\Support\Facades\Auth;
+//use Intervention\Image\ImageManager;
+//use Intervention\Image\ImageManagerStatic as Image;
+use \Intervention\Image\Facades\Image;
+
 
 class CaixaController extends Component
 {
@@ -25,18 +29,18 @@ class CaixaController extends Component
 
         if(strlen($this->search) > 0)
         {
-            return view('livewire.caixas.caixaComponent', [
+            return view('livewire.movimentos.movimentos-component', [
                 'info' => Caixa::where('tipo', 'like' .'%' . $this->search .'%')
                 ->orWhere('descricao', 'like' .'%'. $this->search .'%')
                 ->paginate($this->pagination),
             ]);
         } else {
             $caixas = Caixa::leftjoin('users as u', 'u.id', 'caixas.user_id')
-            ->select('caixas.*', 'u.nome')
+            ->select('caixas.*', 'u.name')
             ->orderBy('id', 'desc')
             ->paginate($this->pagination);
 
-            return view('livewire.caixas.caixa-component', [
+            return view('livewire.movimentos.movimentos-component', [
                 'info' => $caixas
             ]);
         }
@@ -109,13 +113,20 @@ class CaixaController extends Component
             if($this->comprovante)
             {
                 $image = $this->comprovante;
-                $fileName = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';'))))[1][1];
-                $moved = \Image::make($image)->save('images/movs/'.$fileName);
+                $fileName = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                $moved = Image::make($image)->save('storage/images/movs/'.$fileName);
+                
+                
+                
 
                 if($moved)
                 {
                     $caixa->comprovante = $fileName;
                     $caixa->save();
+                    $this->emit('msgok', 'Imagem enviada com sucesso!');
+                } else {
+                    $this->emit('msg-error', 'Imagem não foi gravada!');
+                    $this->emit('msgok', 'erro com a imagem!');
                 }
             }
         } 
@@ -123,7 +134,7 @@ class CaixaController extends Component
         {
             $record = Caixa::find($this->selected_id);
             
-            $record = Caixa::update([
+            $record->updateupdate([
                 'valor' => $this->valor,
                 'tipo' => $this->tipo,
                 'descricao' => $this->descricao,
@@ -133,8 +144,8 @@ class CaixaController extends Component
             if($this->comprovante)
             {
                 $image = $this->comprovante;
-                $fileName = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';'))))[1][1];
-                $moved = \Image::make($image)->save('images/'.$fileName);
+                $fileName = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                $moved = Image::make($image)->save('images/'.$fileName);
 
                 if($moved)
                 {
@@ -161,7 +172,7 @@ class CaixaController extends Component
     ];
 
 
-    protected function handleFileUpload()
+    public function handleFileUpload($imageData)
     {
         $this->comprovante = $imageData;
     }

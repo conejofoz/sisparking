@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 
-@section('title') Caixas @endsection
+@section('title') movimentos @endsection
 
 
 @section('content')

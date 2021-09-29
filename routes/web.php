@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* Route::get('/caixas', function(){
-    return view('caixas');
+/* Route::get('/movimentos', function(){
+    return view('movimentos');
 }); */
 
 
@@ -33,6 +33,6 @@ Route::get('/empresa', function(){
 });
 
 
-Route::view('caixas', 'caixas');
+Route::view('movimentos', 'movimentos');
 Route::view('tipos', 'tipos');
-Route::view('caixas', 'caixas');
+Route::view('movimentos', 'movimentos');
