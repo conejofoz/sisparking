@@ -36,3 +36,4 @@ Route::get('/empresa', function(){
 Route::view('movimentos', 'movimentos');
 Route::view('tipos', 'tipos');
 Route::view('movimentos', 'movimentos');
+Route::view('tarifas', 'tarifas');
