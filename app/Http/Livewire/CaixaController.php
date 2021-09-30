@@ -30,8 +30,8 @@ class CaixaController extends Component
         if(strlen($this->search) > 0)
         {
             return view('livewire.movimentos.movimentos-component', [
-                'info' => Caixa::where('tipo', 'like' .'%' . $this->search .'%')
-                ->orWhere('descricao', 'like' .'%'. $this->search .'%')
+                'info' => Caixa::where('tipo', 'like', '%' . $this->search .'%')
+                ->orWhere('descricao', 'like', '%' . $this->search . '%')
                 ->paginate($this->pagination),
             ]);
         } else {
@@ -71,7 +71,7 @@ class CaixaController extends Component
         $this->valor = '';
         $this->comprovante= '';
         $this->selected_id = null;
-        $this->action = -1;
+        $this->action = 1;
         $this->search = '';
     }
 
@@ -84,7 +84,7 @@ class CaixaController extends Component
         $this->valor =  $record->valor;
         $this->comprovante=  $record->comprovante;
         $this->selected_id = $id;
-        $this->action =  $record->action;
+        $this->action =  2;
     }
 
 
@@ -134,7 +134,7 @@ class CaixaController extends Component
         {
             $record = Caixa::find($this->selected_id);
             
-            $record->updateupdate([
+            $record->update([
                 'valor' => $this->valor,
                 'tipo' => $this->tipo,
                 'descricao' => $this->descricao,
@@ -145,7 +145,7 @@ class CaixaController extends Component
             {
                 $image = $this->comprovante;
                 $fileName = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                $moved = Image::make($image)->save('images/'.$fileName);
+                $moved = Image::make($image)->save('storage/images/movs/'.$fileName);
 
                 if($moved)
                 {

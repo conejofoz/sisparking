@@ -7,9 +7,10 @@
 
             <div class="row">
 
-                <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                    <label for="">Tipo</label>
-                    <select name="" id="" wire:model="tipo">
+                
+                <div class="form-group col-lg-4 col-md-4 col-sm-12">    
+                    <label>Tipo</label>
+                    <select wire:model.lazy="tipo" class="form-control text-center">
                         <option value="Escolher">Escolher</option>
                         <option value="Receita">Receita</option>
                         <option value="Despesa">Despesa</option>
@@ -39,7 +40,7 @@
 
 
                 <div class="row">
-                    <div class="col-lg-5 mt-2 text-left">
+                    <div class="col-xs-5 mt-2 text-left">
                         <button type="button" class="btn btn-dark mr-1" wire:click="doAction(1)">
                             <i class="mbri-left"></i>
                             Voltar
