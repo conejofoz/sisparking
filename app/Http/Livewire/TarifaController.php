@@ -54,7 +54,7 @@ class TarifaController extends Component
             ->orderBy('t.descricao')
             ->paginate($this->pagination);
 
-            return view('livewire.tarifas.componente-tarifas', ['info' => $info]);
+            return view('livewire.tarifas.component-tarifas', ['info' => $info]);
         }
         else{
             /**
@@ -66,7 +66,7 @@ class TarifaController extends Component
             ->orderBy('t.descricao')
             ->paginate($this->pagination);
             
-            return view('livewire.tarifas.componente-tarifas', ['info' => $info]);
+            return view('livewire.tarifas.component-tarifas', ['info' => $info]);
 
         }
 
