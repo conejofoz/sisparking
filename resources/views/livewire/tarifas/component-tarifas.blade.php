@@ -69,7 +69,7 @@
                                     <ul class="table-controls">
                                         {{-- @can($edit) --}}
                                         <li>
-                                            <a href="javascript:void(0);" onclick="editTarifa({{$r->id}})" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <a href="javascript:void(0);" onclick="editTarifa({{$r}})" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
                                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 text-success">
                                                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
@@ -120,7 +120,8 @@
 
 
 
-<script>
+<script type="text/javascript">
+
     function Confirm(id)
     {       
        swal({
@@ -152,16 +153,16 @@
        $('#descricao').val(info.descricao)
        $('#tempo').val(info.tempo)
        $('#hierarquia').val(info.hierarquia)
-       $('#modal-title').val('Editar Tarifa')
-       $('#modalTarifa').val('show')
+       $('#modal-title').text('Editar Tarifa')
+       $('#modalTarifa').modal('show')
    }
 
 
    function openModal()
    {
        $('#id').val(0)
-       $('#modal-title').val('Criar Tarifa')
-       $('#modalTarifa').val('show')
+       $('#modal-title').text('Criar Tarifa')
+       $('#modalTarifa').modal('show')
 
    }
 
