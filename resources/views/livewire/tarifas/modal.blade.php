@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalTarifa" tabindex="-1" aria-labelledby="modalTarifa" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -22,9 +22,8 @@
                             
                             <div class="form-group col-lg-4 col-md-4 col-sm-12">    
                                 <label>Tempo</label>
-                                <select class="form-control text-center">
+                                <select class="form-control text-center" id="tempo">
                                     <option value="Selecionar">Selecionar</option>
-                                    <option value="Fracao">Fração</option>
                                     <option value="Hora">Hora</option>
                                     <option value="Dia">Dia</option>
                                     <option value="Semana">Semana</option>
@@ -48,13 +47,13 @@
             
                             <div class="form-group col-lg-4 col-md-4 col-sm-12">
                                 <label for="">Custo</label>
-                                <input type="number" id="custo" class="form-control text-center" placeholder="">
+                                <input type="number" id="custo" class="form-control text-center" value="0" placeholder="">
                             </div>
             
                             
                             <div class="form-group col-lg-12 col-sm-12 mb-8">
                                 <label for="">Descrição</label>
-                                <input type="text" id="descricao" class="form-control" value="0" placeholder="">
+                                <input type="text" id="descricao" class="form-control" placeholder="">
                             </div>
             
             
@@ -71,6 +70,7 @@
             </div>
 
 
+            
         </div>
         <div class="modal-footer">
           <button class="btn btn-dark" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancelar</button>

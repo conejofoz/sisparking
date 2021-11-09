@@ -38,8 +38,13 @@ class TarifaController extends Component
             $tarifa = Tarifa::select('hierarquia')->orderBy('hierarquia', 'desc')->first();
             $this->hierarquia = $tarifa->hierarquia + 1;
         }
+        else
+        {
+            $this->hierarquia = 0;
+        }
     }
 
+    
 
     public function render()
     {
@@ -119,9 +124,9 @@ class TarifaController extends Component
     public function storeOrUpdate()
     {
         $this->validate([
-            'tempo' => 'requerido|not_in:Selecionar',
-            'custo' => 'requerido',
-            'tipo' => 'requerido|not_in:Selecionar',
+            'tempo' => 'required|not_in:Selecionar',
+            'custo' => 'required',
+            'tipo' => 'required|not_in:Selecionar',
         ]);
 
         if($this->selected_id > 0)

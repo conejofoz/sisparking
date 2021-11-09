@@ -55,6 +55,7 @@
                         </thead>
                         <tbody>
                             @foreach ($info as $r)
+                            <tr>
                                 <td>{{$r->id}}</td>
                                 <td>{{$r->tempo}}</td>
                                 <td>{{$r->descricao}}</td>
@@ -69,7 +70,7 @@
                                     <ul class="table-controls">
                                         {{-- @can($edit) --}}
                                         <li>
-                                            <a href="javascript:void(0);" onclick="editTarifa({{$r}})" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <a href="javascript:void(0);" onclick="editTarifa('{{$r}}')" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
                                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 text-success">
                                                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
@@ -80,14 +81,14 @@
                                     
                                         {{-- @can($destroy) --}}
                                         <li>
-                                            @if ($r->renda->count() <=0 )
+                                           {{--  @if($r->renda->count() <=0 ) --}}
                                             <a href="javascript:void(0);"          		
                                             onclick="Confirm('{{$r->id}}')"
                                             data-toggle="tooltip" data-placement="top" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-danger">
                                             <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                             <line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>
-                                            @endif
+                                            {{-- @endif --}}
                                         </li>
                                         {{-- @endcan --}}
                                     
@@ -95,6 +96,7 @@
                                     </ul>
                                     {{-- action sem liveware --}}
                                 </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -149,9 +151,10 @@
    {
        var info = JSON.parse(row)
        $('#id').val(info.id)
-       $('#custo').val(info.custo')
+       $('#custo').val(info.custo)
        $('#descricao').val(info.descricao)
        $('#tempo').val(info.tempo)
+       $('#tipo').val(info.tipo_id)
        $('#hierarquia').val(info.hierarquia)
        $('#modal-title').text('Editar Tarifa')
        $('#modalTarifa').modal('show')
@@ -161,9 +164,10 @@
    function openModal()
    {
        $('#id').val(0)
+       $('#tempo').val('Selecionar')
+       $('#tipo').val('Selecionar')
        $('#modal-title').text('Criar Tarifa')
        $('#modalTarifa').modal('show')
-
    }
 
 
@@ -186,14 +190,14 @@
         }
 
 
-        var data = JSON.stringify([
+        var data = JSON.stringify({
             'id'         : $('#id').val(),
             'tempo'      : $('#tempo option:selected').val(),
             'tipo'       : $('#tipo option:selected').val(),
             'custo'      : $('#custo').val(),
             'descricao'  : $('#descricao').val(),
             'hierarquia' : $('#hierarquia').val(),
-        ])
+        })
 
         window.livewire.emit('createFromModal', data)
    }
