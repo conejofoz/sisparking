@@ -174,7 +174,7 @@ class TarifaController extends Component
         //REVISAR MELHOR DEPOIS
         if($this->hierarquia == 1)
         {
-            Tarifa::where('id', '<>', $tarifa->id)->update(['hierarquia' => 0 ]);
+            //Tarifa::where('id', '<>', $tarifa->id)->update(['hierarquia' => 0 ]);
         }
 
         if($this->selected_id)

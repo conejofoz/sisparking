@@ -31,7 +31,7 @@
                     {{-- @can($create) --}}
                     <div class="col-md-2 col-lg-2 col-sm-12 mt-2 mb-2 text-right mr-2">
                          {{-- <button type="button" wire:click="doAction(2)" class="btn btn-dark"> --}}
-                         <button type="button" onclick="openModal()" class="btn btn-dark">
+                         <button type="button" onclick='openModal("{{$hierarquia}}")' class="btn btn-dark">
                               <i class="la la-file la-lg"></i>
                         </button>
                     </div>
@@ -161,11 +161,14 @@
    }
 
 
-   function openModal()
+   function openModal(hierarquia)
    {
        $('#id').val(0)
+       $('#custo').val('')
+       $('#descricao').val('')
        $('#tempo').val('Selecionar')
        $('#tipo').val('Selecionar')
+       $('#hierarquia').val(hierarquia)
        $('#modal-title').text('Criar Tarifa')
        $('#modalTarifa').modal('show')
    }
