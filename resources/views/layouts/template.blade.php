@@ -339,15 +339,15 @@
 
                             <ul class="collapse submenu list-unstyled" id="configurations" data-parent="#topAccordion">
                                 <li>
-                                    <a href="#">EMPRESA </a>
+                                    <a href="{{ url('empresa')}}">EMPRESA </a>
                                 </li>
 
                                 <li>
-                                    <a href="#"> CAJONES </a>
+                                    <a href="{{ url('movimentos')}}"> CAJONES </a>
                                 </li>
 
                                 <li>
-                                    <a href="#"> TIPOS DE DEHICULOS </a>
+                                    <a href="{{ url('tipos')}}"> TIPOS DE DEHICULOS </a>
                                 </li>
                             </ul>
                         </li>

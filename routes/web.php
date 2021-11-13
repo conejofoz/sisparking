@@ -37,3 +37,4 @@ Route::view('movimentos', 'movimentos');
 Route::view('tipos', 'tipos');
 Route::view('movimentos', 'movimentos');
 Route::view('tarifas', 'tarifas');
+Route::view('empresa', 'empresa');
